@@ -12,6 +12,21 @@ defmodule Helpdesk.Support.Ticket do
     create :open do
       accept [:subject]
     end
+
+    update :close do
+      # We don't want to accept any input here
+      accept []
+
+      validate attribute_does_not_equal(:status, :closed) do
+        message "Ticket is already closed"
+      end
+
+      change set_attribute(:status, :closed)
+      # A custom change could be added like so:
+      #
+      # change MyCustomChange
+      # change {MyCustomChange, opt: :val}
+    end
   end
 
   # Attributes are the simple pieces of data that exist on your resource
