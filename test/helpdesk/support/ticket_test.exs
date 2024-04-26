@@ -15,4 +15,14 @@ defmodule Helpdesk.Support.TicketTest do
     assert {:ok, _} = Ecto.UUID.cast(ticket.id)
     assert ticket.subject == "Hello darkness my old friend"
   end
+
+  # TODO: fix test
+  #   test "create ticket without subject" do
+  #     Ticket
+  #     |> Ash.Changeset.for_create(
+  #       :open,
+  #       %{}
+  #     )
+  #     |> Ash.Test.refute_has_error()
+  #   end
 end
