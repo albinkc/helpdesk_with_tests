@@ -24,7 +24,8 @@ defmodule Helpdesk.MixProject do
     [
       {:ash, github: "ash-project/ash", branch: "main", override: true},
       {:picosat_elixir, "~> 0.2"},
-      {:ash_postgres, github: "ash-project/ash_postgres", branch: "main", override: true}
+      # {:ash_postgres, github: "ash-project/ash_postgres", branch: "main", override: true},
+      {:ash_postgres, "~> 2.0.0-rc"}
     ]
   end
 end
