@@ -1,5 +1,5 @@
 defmodule Helpdesk.Support.TicketTest do
-  use ExUnit.Case
+  use Helpdesk.DataCase, async: true
 
   alias Helpdesk.Support.Ticket
 
@@ -70,5 +70,6 @@ defmodule Helpdesk.Support.TicketTest do
     # |> Ash.first!(:id)
 
     assert {:ok, _} = Ecto.UUID.cast(hd(output).id)
+    assert 1 == 1
   end
 end
