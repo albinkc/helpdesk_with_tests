@@ -20,6 +20,10 @@ defmodule Helpdesk.Support.Ticket do
       accept [:subject]
     end
 
+    update :assign do
+      accept [:representative_id]
+    end
+
     update :close do
       # We don't want to accept any input here
       accept []
@@ -65,5 +69,15 @@ defmodule Helpdesk.Support.Ticket do
       # We also don't want status to ever be `nil`
       allow_nil? false
     end
+  end
+
+  # lib/helpdesk/support/ticket.ex
+
+  relationships do
+    # belongs_to means that the destination attribute is unique, meaning only one related record could exist.
+    # We assume that the destination attribute is `representative_id` based
+    # on the name of this relationship and that the source attribute is `representative_id`.
+    # We create `representative_id` automatically.
+    belongs_to :representative, Helpdesk.Support.Representative
   end
 end
