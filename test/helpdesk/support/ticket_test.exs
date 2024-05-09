@@ -67,9 +67,6 @@ defmodule Helpdesk.Support.TicketTest do
       |> Ash.Query.filter(status == :closed and not contains(subject, "4"))
       |> Ash.read!()
 
-    # |> Ash.first!(:id)
-
     assert {:ok, _} = Ecto.UUID.cast(hd(output).id)
-    assert 1 == 1
   end
 end
