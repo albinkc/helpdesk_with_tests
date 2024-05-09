@@ -1,5 +1,3 @@
-# lib/helpdesk/support/ticket.ex
-
 defmodule Helpdesk.Support.Ticket do
   # This turns this module into a resource
   use Ash.Resource,
