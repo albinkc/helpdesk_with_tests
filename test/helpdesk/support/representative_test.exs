@@ -4,23 +4,20 @@ defmodule Helpdesk.Support.RepresentativeTest do
   alias Helpdesk.Support.Ticket
   alias Helpdesk.Support.Representative
 
-  # require Ash.Query
+  defp create_representative(name) do
+    Representative
+    |> Ash.Changeset.for_create(:create, %{name: name})
+    |> Ash.create!()
+  end
 
   test "create representative" do
-    representative =
-      Representative
-      |> Ash.Changeset.for_create(:create, %{name: "Joe Armstrong"})
-      |> Ash.create!()
-
+    representative = create_representative("Joe Armstrong")
     assert {:ok, _} = Ecto.UUID.cast(representative.id)
     assert representative.name == "Joe Armstrong"
   end
 
   test "assign representative to a ticket" do
-    representative =
-      Representative
-      |> Ash.Changeset.for_create(:create, %{name: "Joe Armstrong"})
-      |> Ash.create!()
+    representative = create_representative("Joe Armstrong")
 
     ticket =
       Ticket
