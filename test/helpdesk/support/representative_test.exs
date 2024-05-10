@@ -4,7 +4,7 @@ defmodule Helpdesk.Support.RepresentativeTest do
   alias Helpdesk.Support.Ticket
   alias Helpdesk.Support.Representative
 
-  require Ash.Query
+  # require Ash.Query
 
   test "create representative" do
     representative =
@@ -26,14 +26,11 @@ defmodule Helpdesk.Support.RepresentativeTest do
       Ticket
       |> Ash.Changeset.for_create(:open, %{subject: "I can't find my hand!"})
       |> Ash.create!()
-
-    ticket
-    |> Ash.Changeset.for_update(:assign, %{representative_id: representative.id})
-    |> Ash.update!()
-    |> Ash.load!([:representative])
+      |> Ash.Changeset.for_update(:assign, %{representative_id: representative.id})
+      |> Ash.update!()
+      |> Ash.load!([:representative])
 
     assert {:ok, _} = Ecto.UUID.cast(ticket.id)
-    # IO.inspect(ticket.representative)
     assert ticket.representative.name == "Joe Armstrong"
   end
 end
