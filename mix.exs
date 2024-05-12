@@ -27,10 +27,9 @@ defmodule Helpdesk.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ash, github: "ash-project/ash", branch: "main", override: true},
+      {:ash, "~> 3.0"},
       {:picosat_elixir, "~> 0.2"},
-      # {:ash_postgres, github: "ash-project/ash_postgres", branch: "main", override: true},
-      {:ash_postgres, "~> 2.0.0-rc"}
+      {:ash_postgres, "~> 2.0.0"}
     ]
   end
 end
